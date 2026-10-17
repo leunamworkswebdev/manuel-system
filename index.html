@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Henhouse Heritage | Live Chickens for Sale</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="shape s1"></div><div class="shape s2"></div><div class="shape s3"></div>
+
+<header class="top" id="top">
+  <a class="brand" href="#home">Henhouse Heritage</a>
+  <nav id="nav" aria-label="Main">
+    <a href="#featured">Featured</a><a href="#categories">By age</a><a href="#shop">Shop</a><a href="#about">About</a>
+  </nav>
+  <div class="tools">
+    <button class="btn ghost" id="adminBtn">Admin</button>
+    <button class="btn" id="cartBtn">Cart <span class="count" id="cartCount">0</span></button>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="site">
+  <section class="hero" id="home">
+    <div class="hero-text">
+      <h1>Healthy heritage chickens, raised on open ground.</h1>
+      <p>Silkie, Rhode Island Red, Brahma, Leghorn and Kadaknath. Choose birds at 4, 5 or 6+ months old, ready for your coop.</p>
+      <div class="row">
+        <a class="btn big" href="#shop">Shop chickens</a>
+        <a class="btn big ghost" href="#featured">See featured</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="blob" id="blob"><img id="heroImg" src="images/silkie.png" alt="Silkie chicken"></div>
+      <div class="hero-ctl">
+        <button class="round" id="prev" aria-label="Previous breed">&#8249;</button>
+        <button class="btn ghost" id="heroShop">Shop Silkie</button>
+        <button class="round" id="next" aria-label="Next breed">&#8250;</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="featured">
+    <h2>Featured chickens</h2>
+    <p class="lead">Hand-picked birds that are ready to go home this week.</p>
+    <div class="grid" id="featuredGrid"></div>
+  </section>
+
+  <section class="block" id="categories">
+    <h2>Choose by age</h2>
+    <p class="lead">Younger birds adapt quickly. Older birds are closer to laying or full size.</p>
+    <div class="cats" id="catCards"></div>
+  </section>
+
+  <section class="block" id="shop">
+    <h2>All chickens</h2>
+    <div class="chips" id="chips" role="group" aria-label="Filter by age"></div>
+    <div class="toolbar">
+      <label>Search<input type="search" id="search" placeholder="Name or breed"></label>
+      <label>Breed<select id="breedSel"></select></label>
+      <label>Sort by<select id="sortSel">
+        <option value="featured">Featured first</option>
+        <option value="low">Price: low to high</option>
+        <option value="high">Price: high to low</option>
+        <option value="age">Youngest first</option>
+      </select></label>
+      <button class="btn ghost" id="clearBtn">Clear filters</button>
+    </div>
+    <p class="count-line" id="resultCount" aria-live="polite"></p>
+    <div class="grid" id="productGrid"></div>
+    <p class="empty" id="emptyMsg" hidden>No chickens match these filters. Clear the filters to see every listing.</p>
+  </section>
+
+  <section class="block about" id="about">
+    <h2>How we raise our flock</h2>
+    <div class="trio">
+      <div class="reveal"><h3>Open ground</h3><p>Birds spend their days foraging outdoors with shade and clean water close by.</p></div>
+      <div class="reveal"><h3>Checked before sale</h3><p>Every chicken is looked over for health, feathers and movement before it is listed.</p></div>
+      <div class="reveal"><h3>Simple pickup</h3><p>Place your order and we will message you to arrange pickup or delivery.</p></div>
+    </div>
+  </section>
+</main>
+
+<section id="admin" hidden>
+  <div class="admin-bar">
+    <h2>Admin dashboard</h2>
+    <button class="btn ghost" id="logout" hidden>Log out</button>
+  </div>
+  <form id="loginForm" class="login" novalidate>
+    <label>Admin password<input type="password" id="pass" autocomplete="current-password"></label>
+    <p class="err" id="loginErr" role="alert"></p>
+    <button class="btn big" type="submit">Log in</button>
+    <small>Demo password: admin123. Change ADMIN_PASS in script.js before going live.</small>
+  </form>
+  <div id="dash" hidden>
+    <div class="stats" id="stats"></div>
+    <div class="tabs" role="tablist">
+      <button class="tab on" data-act="tab" data-tab="list">Listings</button>
+      <button class="tab" data-act="tab" data-tab="form" id="formTab">Add listing</button>
+      <button class="tab" data-act="tab" data-tab="orders">Orders</button>
+    </div>
+    <div id="p_list" class="panel"><div class="tablewrap"><table><thead><tr><th>Chicken</th><th>Age group</th><th>Price</th><th>Stock</th><th>Actions</th></tr></thead><tbody id="rows"></tbody></table></div>
+      <button class="btn ghost" id="resetBtn">Reset demo data</button></div>
+    <div id="p_form" class="panel" hidden>
+      <form id="pForm" class="pform" novalidate>
+        <input type="hidden" id="f_id">
+        <label>Name<input id="f_name" required maxlength="60"></label>
+        <label>Breed<input id="f_breed" list="breedList" required maxlength="40"></label>
+        <datalist id="breedList"></datalist>
+        <label>Age (months)<input type="number" id="f_age" min="1" max="60" value="4" required></label>
+        <label>Age group<select id="f_cat"><option value="4">4 months old</option><option value="5">5 months old</option><option value="6">6 months &amp; older</option></select></label>
+        <label>Price<input type="number" id="f_price" min="0" step="1" required></label>
+        <label>Stock<input type="number" id="f_stock" min="0" step="1" value="1" required></label>
+        <label>Sex<select id="f_sex"><option>Female</option><option>Male</option><option>Unsexed</option></select></label>
+        <label>Photo<input type="file" id="f_img" accept="image/*"></label>
+        <label class="wide">Description<textarea id="f_desc" rows="3" maxlength="240" required></textarea></label>
+        <label class="check wide"><input type="checkbox" id="f_feat"> Show in featured chickens</label>
+        <img id="f_prev" class="prev" alt="" hidden>
+        <p class="err wide" id="formErr" role="alert"></p>
+        <div class="row wide"><button class="btn big" type="submit" id="saveBtn">Add listing</button><button class="btn big ghost" type="button" id="cancelEdit">Cancel</button></div>
+      </form>
+    </div>
+    <div id="p_orders" class="panel" hidden><div id="orders"></div></div>
+  </div>
+</section>
+
+<footer class="foot-bar"><strong>Henhouse Heritage</strong><span>Live chickens, sold by age. Orders are confirmed by message.</span></footer>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-hidden="true" aria-label="Shopping cart">
+  <div class="dhead"><h2>Your cart</h2><button class="x" id="dClose" aria-label="Close cart">&times;</button></div>
+  <div id="cartItems"></div>
+  <form id="checkout" novalidate hidden>
+    <h3>Your details</h3>
+    <label>Full name<input id="c_name" autocomplete="name"></label>
+    <label>Phone number<input id="c_phone" type="tel" autocomplete="tel"></label>
+    <label>Pickup or delivery address<textarea id="c_addr" rows="2" autocomplete="street-address"></textarea></label>
+    <p class="err" id="checkoutErr" role="alert"></p>
+    <button class="btn big" type="submit">Place order</button>
+  </form>
+</aside>
+
+<div class="modal" id="modal" hidden>
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+    <button class="x" id="mClose" aria-label="Close details">&times;</button>
+    <div id="mBody" class="mbody"></div>
+  </div>
+</div>
+<div id="toast" role="status" aria-live="polite"></div>
+<script src="script.js"></script>
+</body>
+</html>
