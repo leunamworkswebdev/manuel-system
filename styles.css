@@ -136,34 +136,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--teal);outline:none}
 #toast{position:fixed;left:50%;bottom:1.5rem;transform:translate(-50%,150%);background:var(--forest);color:#fff;padding:.8rem 1.4rem;border-radius:999px;z-index:90;transition:transform .35s;max-width:92vw;text-align:center}
 #toast.show{transform:translate(-50%,0)}
 
-/* admin */
-#admin{padding:1.5rem clamp(1rem,4vw,3rem) 4rem;min-height:80vh}
-.admin-bar{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-bottom:1.5rem}
-.login{display:grid;gap:1rem;max-width:380px;background:#fff;padding:1.6rem;border-radius:var(--r)}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-bottom:1.5rem}
-.stat{background:var(--forest);color:#fff;border-radius:var(--r);padding:1.2rem}
-.stat b{display:block;font:800 2rem var(--f1)}
-.tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem}
-.tab{padding:.55rem 1.2rem;border-radius:999px;border:2px solid var(--forest);background:transparent;font-weight:700;cursor:pointer}
-.tab.on{background:var(--forest);color:#fff}
-.panel{background:#fff;border-radius:var(--r);padding:1.2rem}
-.tablewrap{overflow-x:auto;margin-bottom:1rem}
-table{width:100%;border-collapse:collapse;min-width:640px}
-th,td{text-align:left;padding:.7rem;border-bottom:1px solid var(--sage)}
-.who{display:flex;gap:.7rem;align-items:center}
-.who img{width:48px;height:48px;border-radius:12px;object-fit:cover}
-.who small{display:block}
-.pin{width:100px}
-.stk{display:flex;align-items:center;gap:.5rem}
-.pform{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
-.wide{grid-column:1/-1}
-.check{display:flex;align-items:center;gap:.5rem}
-.check input{width:auto}
-.prev{width:140px;height:105px;object-fit:cover;border-radius:14px}
-.order{border:1px solid var(--sage2);border-radius:16px;padding:1rem;margin-bottom:1rem;display:grid;gap:.4rem}
-.order header{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;align-items:center}
-.order select{width:auto}
-
 /* responsive */
 @media (max-width:900px){
  .hero{grid-template-columns:1fr;min-height:0;padding-top:1rem}

@@ -18,7 +18,6 @@
     <a href="#featured">Featured</a><a href="#categories">By age</a><a href="#shop">Shop</a><a href="#about">About</a>
   </nav>
   <div class="tools">
-    <button class="btn ghost" id="adminBtn">Admin</button>
     <button class="btn" id="cartBtn">Cart <span class="count" id="cartCount">0</span></button>
     <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
   </div>
@@ -84,49 +83,6 @@
     </div>
   </section>
 </main>
-
-<section id="admin" hidden>
-  <div class="admin-bar">
-    <h2>Admin dashboard</h2>
-    <button class="btn ghost" id="logout" hidden>Log out</button>
-  </div>
-  <form id="loginForm" class="login" novalidate>
-    <label>Admin password<input type="password" id="pass" autocomplete="current-password"></label>
-    <p class="err" id="loginErr" role="alert"></p>
-    <button class="btn big" type="submit">Log in</button>
-    <small>Demo password: admin123. Change ADMIN_PASS in script.js before going live.</small>
-  </form>
-  <div id="dash" hidden>
-    <div class="stats" id="stats"></div>
-    <div class="tabs" role="tablist">
-      <button class="tab on" data-act="tab" data-tab="list">Listings</button>
-      <button class="tab" data-act="tab" data-tab="form" id="formTab">Add listing</button>
-      <button class="tab" data-act="tab" data-tab="orders">Orders</button>
-    </div>
-    <div id="p_list" class="panel"><div class="tablewrap"><table><thead><tr><th>Chicken</th><th>Age group</th><th>Price</th><th>Stock</th><th>Actions</th></tr></thead><tbody id="rows"></tbody></table></div>
-      <button class="btn ghost" id="resetBtn">Reset demo data</button></div>
-    <div id="p_form" class="panel" hidden>
-      <form id="pForm" class="pform" novalidate>
-        <input type="hidden" id="f_id">
-        <label>Name<input id="f_name" required maxlength="60"></label>
-        <label>Breed<input id="f_breed" list="breedList" required maxlength="40"></label>
-        <datalist id="breedList"></datalist>
-        <label>Age (months)<input type="number" id="f_age" min="1" max="60" value="4" required></label>
-        <label>Age group<select id="f_cat"><option value="4">4 months old</option><option value="5">5 months old</option><option value="6">6 months &amp; older</option></select></label>
-        <label>Price<input type="number" id="f_price" min="0" step="1" required></label>
-        <label>Stock<input type="number" id="f_stock" min="0" step="1" value="1" required></label>
-        <label>Sex<select id="f_sex"><option>Female</option><option>Male</option><option>Unsexed</option></select></label>
-        <label>Photo<input type="file" id="f_img" accept="image/*"></label>
-        <label class="wide">Description<textarea id="f_desc" rows="3" maxlength="240" required></textarea></label>
-        <label class="check wide"><input type="checkbox" id="f_feat"> Show in featured chickens</label>
-        <img id="f_prev" class="prev" alt="" hidden>
-        <p class="err wide" id="formErr" role="alert"></p>
-        <div class="row wide"><button class="btn big" type="submit" id="saveBtn">Add listing</button><button class="btn big ghost" type="button" id="cancelEdit">Cancel</button></div>
-      </form>
-    </div>
-    <div id="p_orders" class="panel" hidden><div id="orders"></div></div>
-  </div>
-</section>
 
 <footer class="foot-bar"><strong>Henhouse Heritage</strong><span>Live chickens, sold by age. Orders are confirmed by message.</span></footer>
 
